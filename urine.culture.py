@@ -107,7 +107,7 @@ def culture_report():
     uc_df['cfu_1'] = uc_df['cfu_1'].astype(int)
     uc_df[['bug_1', 'bug_2', 'bug_3']] = uc_df[['bug_1', 'bug_2', 'bug_3']].applymap(lambda x: x.strip() if isinstance(x, str) else x)
 
-    #uc_df.to_csv('C:/Users/austin.d.jones43/Desktop/urine.pi.data/final_bug.csv')
+    #uc_df.to_csv('')
     
     return uc_df
 
@@ -129,9 +129,6 @@ def cdx_split(bug):
         m = pos.group()
         n = re.findall(r'(\d+)(?=\scfu/ml|\scfu/mL)', m, flags=re.IGNORECASE)
         o = re.findall(r'(?<=cfu/ml\s)([a-zA-Z\s/]*?)(?=[0-9:;.,>(#-]|with|and\s|Routine|Ceph|Was|unable|Suscept|$|Specimen|PLEASE)', m, flags=re.IGNORECASE)
-        
-        #the above it not matching everything because sometimes the species is at the end of the string
-        #and is not followed by anything.  Need to find a way to match something that's the end of the string
         
         for i in range(0, len(n)):
             dict[i].append(n[i])
