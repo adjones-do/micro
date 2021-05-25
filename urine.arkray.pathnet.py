@@ -1,18 +1,18 @@
+#Text report for AU4050-1 and AU4050-2 from Daily Reports app in Path Net
+
 import re
 import pandas as pd
 
 def urine_report():
 
-    source = 'C:/Users/austin.d.jones43/Desktop/urine.pi.data/arkray.accession.au4050-1&2.14jan-29feb.01aug-30sep.txt'
+    source = ''
     
     f = open(source,'r')
 
     subject = f.read()
     
-    #Find each entry so that we can loop through them
     match = re.findall(r'''(?<=DEMOGRAPHICS)(.*?)(?=UA\spH)''', subject, flags=re.S|re.M)
     
-    #Create the lists which we'll append to later
     name = []
     accession = []
     ua_date = [] #this is the collected date/time
